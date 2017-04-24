@@ -1,0 +1,20 @@
+
+
+library(GGally)
+install.packages("scales")
+install.packages("GGally")
+
+library(GGally)
+d<-read.csv("data1.csv")
+summary(d)
+ggpairs(d,
+        upper = list(continuous = "cor", combo = "box"), #上三角行列の表示内容の指定
+        lower = list(continuous = "smooth", combo = "facethist"),#下三角行列の表示内容の指定
+        ggplot2::aes_string(color="sex", alpha = 0.5)) #性別で色分け
+
+# continuousは連続値同士に対して使われる。下記から指定する。
+# ('points', 'smooth', 'smooth_loess', 'density', 'cor', 'blank') 
+
+# comboは連続値とカテゴリカルの関係に対して使われる。下記から指定する。
+# ('box', 'box_no_facet', 'dot', 'dot_no_facet', 'facethist', 'facetdensity', 'denstrip', 'blank').
+
